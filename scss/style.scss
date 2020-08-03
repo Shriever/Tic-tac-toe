@@ -5,6 +5,9 @@ $font-stack: "Rubik", sans-serif;
   margin: 0;
   padding: 0;
 }
+body {
+  background: rgba(218, 112, 214, 0.74);
+}
 
 .play-area {
   max-width: 700px;
@@ -29,4 +32,9 @@ $font-stack: "Rubik", sans-serif;
     vertical-align: text-bottom;
     // display: table-cell;
   }
+}
+.container {
+  display: flex;
+  font-size: 2rem;
+  justify-content: center;
 }

@@ -10,6 +10,11 @@
       href="https://fonts.googleapis.com/css2?family=Rubik:wght@500&display=swap"
       rel="stylesheet"
     />
+    <!-- materialize -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
   </head>
   <body>
     <div class="play-area">
@@ -29,6 +34,22 @@
         <div class="block-9 block"></div>
       </div>
     </div>
+    <!-- score area -->
+    <div class="scores-area container row center-align">
+      <div class="card-panel blue darken-4 orange-text col s3" id="player-x">
+        X : 0
+      </div>
+      <div class="divider"></div>
+      <div href="#" class="waves-effect waves-light btn col s2" id="new-game">
+        new game
+      </div>
+      <div class="divider"></div>
+
+      <div class="card-panel blue darken-4 orange-text col s3" id="player-o">
+        O : 0
+      </div>
+    </div>
+
     <script src="./app.js"></script>
   </body>
 </html>

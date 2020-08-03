@@ -1,5 +1,7 @@
 let playerOneturn = true;
 let gameEnd = false;
+let winsX = 0;
+let winsO = 0;
 
 let blocks = document.querySelectorAll(".block");
 
@@ -21,32 +23,12 @@ blocks.forEach((block) => {
   });
 });
 
-/*
-for (block of blocks) {
-  block.addEventListener("click", () => {
-    console.log(block);
-    // if (block.textContent !== "") {
-    //   //   console.log("null");
-    //   return;
-    // }
-
-    if (playerOneturn) {
-      // textcontent = X
-      block.textContent = "X";
-      playerOneturn = false;
-    } else {
-      // textcontent = O
-      block.textContent = "O";
-      playerOneturn = true;
-    }
-  });
-}
-*/
-
 function newGame() {
   blocks.forEach((block) => {
     block.textContent = "";
   });
+  gameEnd = false;
+  playerOneturn = true;
 }
 
 function checkGameStatus() {
@@ -83,22 +65,45 @@ function checkGameStatus() {
 
   //  check diagonals
   if (
-    blocksText[1] !== "" &&
-    blocksText[1] === blocksText[5] &&
-    blocksText[1] === blocksText[9]
+    blocksText[0] !== "" &&
+    blocksText[0] === blocksText[4] &&
+    blocksText[0] === blocksText[8]
   ) {
-    winner(blocksText[1]);
+    winner(blocksText[0]);
   } else if (
-    blocksText[3] !== "" &&
-    blocksText[3] === blocksText[5] &&
-    blocksText[3] === blocksText[7]
+    blocksText[2] !== "" &&
+    blocksText[2] === blocksText[4] &&
+    blocksText[2] === blocksText[6]
   ) {
-    winner(blocksText[3]);
+    winner(blocksText[2]);
   }
+}
+function updateScores() {
+  let pX = document.getElementById("player-x");
+  let pO = document.getElementById("player-o");
+
+  pX.textContent = `X : ${winsX}`;
+  pO.textContent = `O : ${winsO}`;
 }
 
 function winner(letter) {
-  console.log(`${letter} has won!`);
+  if (gameEnd) return;
+  // congradulate winner
+  let head = document.createElement("h2");
+  let node = document.createTextNode(`${letter} Wins!`);
+  head.appendChild(node);
+
+  alert(`${letter} Wins!`);
+
+  if (letter === "X") {
+    winsX++;
+  } else {
+    winsO++;
+  }
+  updateScores();
+  gameEnd = true;
 }
+
+document.getElementById("new-game").addEventListener("click", newGame);
 
 newGame();
